@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "337262589140",
+    "firebase_url": "https://hometech2020new.firebaseio.com",
+    "project_id": "hometech2020new",
+    "storage_bucket": "hometech2020new.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337262589140:android:1e96b367d42948990ab741",
+        "android_client_info": {
+          "package_name": "com.hometech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337262589140-hee8h72of7kgjbeiad5vreb7g8kss7no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQZARk11BcaXJlFxcfrKvaK0eewjs-3ks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337262589140-hee8h72of7kgjbeiad5vreb7g8kss7no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
