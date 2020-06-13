@@ -1,15 +1,9 @@
 import React,{createContext, useState,useContext} from 'react';
-
- const AutenticaContext=createContext();
-
+const AutenticaContext=createContext();
 export default function AutenticaProvider({children}){
     const [Autentic,setAutentic]=useState(false);
    
-
     return (
-        
-
-
     <AutenticaContext.Provider
     value={{
         Autentic,

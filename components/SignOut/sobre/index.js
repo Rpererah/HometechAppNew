@@ -28,6 +28,13 @@ fazendo com que elas tenham uma interação mais simples na sua casa, de maneira
             \u2022 e muito mais pelo seu celular
 `}</Text>
             </View>
+
+            <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+            <Ionicons name={'md-globe'} size={40} color={'black'} />
+                <Text style={{marginLeft: 10, fontSize: 16}}>
+                Versão atual: 0.0.2
+                </Text>
+            </View>
         </View>
         </>
     )

@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { View,Text, TextInput, TouchableOpacity,Image, StatusBar } from 'react-native'
+import { View,Text, TextInput, TouchableOpacity,Image, StatusBar,Dimensions } from 'react-native'
 import ImageOverlay from "react-native-image-overlay";
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -11,7 +11,7 @@ import {useAutentic} from '../../contexts/Autenticacao';
 
 
  function Sign() {
-
+    const tamanhoTela='100%'
     useEffect(() => {
         async function loadStoragedData(){
        const storaged = await AsyncStorage.getItem('@Auth');
@@ -65,8 +65,8 @@ import {useAutentic} from '../../contexts/Autenticacao';
             source={require("./../../assets/img/fundo.jpg")}
     overlayColor="black"
     overlayAlpha={0.60}
-    height={'100%'}
-    >
+    height={tamanhoTela}
+    ><>
 
             <View style={{flex:1}}>
             <Image
@@ -80,6 +80,8 @@ import {useAutentic} from '../../contexts/Autenticacao';
             placeholder={'E-mail'}
             inlineImageLeft='user'
             onChangeText={text=>setUsuario(text)}
+            keyboardType='email-address'
+            autoCapitalize='none'
             />
             <TextInput
             style={{backgroundColor:'white',marginBottom:40,borderRadius:20,width:300,height:50,opacity:0.65}}
@@ -100,6 +102,7 @@ import {useAutentic} from '../../contexts/Autenticacao';
     
             {msgErro ?(<Text style={{color:'white',textAlign:'center',marginTop:'2%'}}>Usuario ou senha Incorretos</Text>):(<Text>Insira Usuario e senha</Text>)}
             </View>
+            </>
             </ImageOverlay>
             
             
