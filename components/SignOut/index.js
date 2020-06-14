@@ -1,17 +1,15 @@
 import React,{useState,useEffect} from 'react'
-import { View,Button,Text,Dimensions,Image,TouchableOpacity,StatusBar,ScrollView} from 'react-native';
+import { View,Text,Dimensions,Image,TouchableOpacity,StatusBar,Button} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
-
 import {useAutentic} from '../../contexts/Autenticacao';
 import { createDrawerNavigator,DrawerItem} from '@react-navigation/drawer';
-
 import MeusDispositivos from './MeusDispositivos'
 import Sobre from './sobre'
 import Home from './Home'
+import Modal from 'react-native-modal';
+
 
 
 
@@ -23,16 +21,23 @@ function CustomDrawerContent(props,navigation) {
             setAutentic(false);
         })
     }
-    const {Autentic,setAutentic} =useAutentic();
-    const altura=Dimensions.get('screen').height
+      const [isModalVisible, setModalVisible] = useState(false);
+      
+      const toggleModal = () => {
+        setModalVisible(!isModalVisible);
+      };
+
+    
+
+    const {setAutentic} =useAutentic();
     const [focus,setFocus]=useState(true)
     const [focus2,setFocus2]=useState(false)
     const [focus3,setFocus3]=useState(false)
     
     return (
         <>
-      <View style={{backgroundColor:'#2e69b2'}}>
-      <View style={{flexDirection:'row',alignItems:'center',alignContent:'center',backgroundColor:'#a2c6f2'}}>
+      <View style={{backgroundColor:'#2e69b2',opacity:0.95,borderRadius:1}}>
+      <View style={{flexDirection:'row',alignItems:'center',alignContent:'center',backgroundColor:'#a2c6f2',opacity:0.85,borderRadius:5}}>
         <Image source={require('./../../assets/img/LHT3.png')}
         style={{height:75,width:60,}}
         />
@@ -63,8 +68,23 @@ function CustomDrawerContent(props,navigation) {
         focused={focus3}
       /> 
         <View style={{alignItems:'center',marginTop:'180%'}}>
-        <TouchableOpacity style={{backgroundColor:'#d3cdcd',width:100,borderRadius:20,height:30,justifyContent:'center',marginBottom:50}} onPress={Deslogar}><Text style={{textAlign:'center'}}>Deslogar</Text></TouchableOpacity>
+        <TouchableOpacity style={{backgroundColor:'#d3cdcd',width:100,borderRadius:20,height:30,justifyContent:'center',marginBottom:50}} onPress={toggleModal}><Text style={{textAlign:'center'}}>Deslogar</Text></TouchableOpacity>
         </View>
+        <Modal isVisible={isModalVisible}>
+          <View style={{backgroundColor:'#FCA700',height:180,width:300,alignContent:'center',justifyContent:'center',alignItems:'center',marginLeft:'10%',borderRadius:10}}>
+            <Text style={{textAlign:'center',color:'black',fontSize:17}}>Você tem certeza que deseja sair?</Text>
+            <View style={{flexDirection:'row'}}>
+            <View style={{marginLeft:10,marginTop:10}}>
+            <Button title="Sair" onPress={Deslogar} color={'red'} />
+
+            </View>
+            <View style={{marginLeft:10,marginTop:10}}>
+
+            <Button title="Cancelar" color={'#2e69b2'} onPress={toggleModal}/>
+            </View>
+            </View>
+          </View>
+        </Modal>
         </View>
   </>
     );
@@ -74,13 +94,8 @@ function CustomDrawerContent(props,navigation) {
 
 
 
-function SignOut() {
-    
+function SignOut() {    
     const Drawer = createDrawerNavigator();
-    
-     
-       
-
     return (
         <>
         <StatusBar
@@ -97,6 +112,3 @@ function SignOut() {
     }
     
     export default SignOut;
-    
-    
-    
